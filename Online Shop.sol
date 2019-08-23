@@ -16,6 +16,7 @@ contract online_shopping{
     
     mapping (address=>uint) sold;
     uint public number;
+    bool public f;
     uint public totalPrice;
     item  [] public items;
     //soldItems [] public si;
@@ -46,7 +47,7 @@ contract online_shopping{
     {
         
         number=_number;
-        bool f;
+        
         
         
         //len=items.length;
@@ -54,13 +55,13 @@ contract online_shopping{
         {
             if (keccak256(abi.encodePacked(items[i].name))==keccak256(abi.encodePacked(_name)))
             { f= true;p=i;}
-            else
-            {f=false;}
+            
         }
         if(f==true)
         {
           totalPrice= items[p].price*number; 
         }
+        
         
         if(msg.value>totalPrice)
         {
